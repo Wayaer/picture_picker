@@ -1,0 +1,50 @@
+group 'com.picker.picture_picker'
+version '1.0'
+
+buildscript {
+    repositories {
+
+        google()
+        jcenter()
+
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.2'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+        mavenCentral()
+        google()
+        jcenter()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 17
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+    buildToolsVersion = '29.0.2'
+}
+
+dependencies {
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.3.4'
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+}
