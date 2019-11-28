@@ -9,8 +9,6 @@ import android.util.Base64;
 import androidx.annotation.RequiresApi;
 
 import com.luck.picture.lib.PictureSelector;
-import com.luck.picture.lib.config.PictureConfig;
-import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 
 import java.io.File;
@@ -19,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import io.flutter.Log;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -94,10 +91,24 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void onCameraResult(List<LocalMedia> selectList) {
+        List<Map<String, Object>> resultList = new ArrayList<>();
         selectList.forEach(localMedia -> {
-
-
+            Map<String, Object> resultMap = new ArrayMap<>();
+            resultMap.put("path", localMedia.getPath());
+            resultMap.put("size", localMedia.getSize());
+            if (localMedia.isCut()) {
+                resultMap.put("cutPath", localMedia.getCutPath());
+            }
+            if (localMedia.isCompressed()) {
+                resultMap.put("compressPath", localMedia.getCompressPath());
+            }
+            resultMap.put("size", localMedia.getSize());
+            resultMap.put("duration", localMedia.getDuration());
+            resultMap.put("width", localMedia.getWidth());
+            resultMap.put("height", localMedia.getHeight());
+            resultList.add(resultMap);
         });
+        result.success(resultList);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -114,9 +125,9 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
                 resultMap.put("compressPath", localMedia.getCompressPath());
             }
             resultMap.put("size", localMedia.getSize());
-            resultMap.put("duration", localMedia.getDuration() + "");
-            resultMap.put("width", localMedia.getWidth() + "");
-            resultMap.put("height", localMedia.getHeight() + "");
+            resultMap.put("duration", localMedia.getDuration());
+            resultMap.put("width", localMedia.getWidth());
+            resultMap.put("height", localMedia.getHeight());
             resultList.add(resultMap);
         });
         result.success(resultList);
