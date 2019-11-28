@@ -37,4 +37,10 @@ class PicturePicker {
       return Future.value(camera);
     }
   }
+
+  /// [selectValueType] 0:全部类型，1:图片，2:视频，3:音频
+  static Future deleteCacheDirFile({int selectValueType = 0}) async {
+    return channel.invokeMethod(
+        'deleteCacheDirFile', {'selectValueType': selectValueType});
+  }
 }
