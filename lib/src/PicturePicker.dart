@@ -13,31 +13,29 @@ class PicturePicker {
 //    var list = await PicturePicker.openSelect(pickerOptions);
 //    print(list);
 //  }
-  static  openSelect(
-      [PicturePickerOptions selectOptions]) async {
+  static openSelect([PicturePickerOptions selectOptions]) async {
     if (selectOptions == null) selectOptions = PicturePickerOptions();
-    final image =
+    final result =
         await channel.invokeMethod('openSelect', selectOptions.toJson());
-    debugPrint(image);
-    if (image is List) {
+    debugPrint(result);
+    if (result is List) {
       return Future.value(
-          image.map((data) => AssetMedia.fromJson(data)).toList());
+          result.map((data) => AssetMedia.fromJson(data)).toList());
     } else {
-      return image;
+      return Future.value([]);
     }
   }
 
-  static openCamera(
-      [PicturePickerOptions selectOptions]) async {
+  static openCamera([PicturePickerOptions selectOptions]) async {
     if (selectOptions == null) selectOptions = PicturePickerOptions();
-    final camera =
+    final result =
         await channel.invokeMethod('openCamera', selectOptions.toJson());
-    debugPrint(camera);
-    if (camera is List) {
+    debugPrint(result);
+    if (result is List) {
       return Future.value(
-          camera.map((data) => AssetMedia.fromJson(data)).toList());
+          result.map((data) => AssetMedia.fromJson(data)).toList());
     } else {
-      return camera;
+      return Future.value([]);
     }
   }
 
