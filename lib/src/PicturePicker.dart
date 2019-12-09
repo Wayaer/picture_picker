@@ -13,7 +13,8 @@ class PicturePicker {
 //    var list = await PicturePicker.openSelect(pickerOptions);
 //    print(list);
 //  }
-  static openSelect([PicturePickerOptions selectOptions]) async {
+  static Future<List<AssetMedia>> openSelect(
+      [PicturePickerOptions selectOptions]) async {
     if (selectOptions == null) selectOptions = PicturePickerOptions();
     final result =
         await channel.invokeMethod('openSelect', selectOptions.toJson());
@@ -26,7 +27,8 @@ class PicturePicker {
     }
   }
 
-  static openCamera([PicturePickerOptions selectOptions]) async {
+  static Future<List<AssetMedia>> openCamera(
+      [PicturePickerOptions selectOptions]) async {
     if (selectOptions == null) selectOptions = PicturePickerOptions();
     final result =
         await channel.invokeMethod('openCamera', selectOptions.toJson());
