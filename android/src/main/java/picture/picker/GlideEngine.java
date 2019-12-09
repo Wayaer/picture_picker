@@ -1,4 +1,4 @@
-package com.picker.picture_picker;
+package picture.picker;
 
 import android.content.Context;
 import android.graphics.Bitmap;

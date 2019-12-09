@@ -16,5 +16,5 @@ dev_dependencies:
     sdk: flutter
 flutter:
   plugin:
-    androidPackage: com.picker.picture_picker
+    androidPackage: picture.picker
     pluginClass: PicturePickerPlugin

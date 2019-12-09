@@ -1,4 +1,4 @@
-group 'com.picker.picture_picker'
+group 'picture.picker'
 version '1.0'
 
 buildscript {

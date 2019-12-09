@@ -1,13 +1,8 @@
-package com.picker.picture_picker;
+package picture.picker;
 
 import android.app.Activity;
 import android.os.Environment;
-import android.util.Log;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.GlideBuilder;
-import com.bumptech.glide.load.engine.Engine;
-import com.bumptech.glide.load.engine.GlideException;
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
