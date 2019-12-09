@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('Picture Picker Plugin example app'),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
