@@ -15,26 +15,26 @@ class PicturePicker {
   static Future<List<AssetMedia>> openSelect(
       [PicturePickerOptions selectOptions]) async {
     if (selectOptions == null) selectOptions = PicturePickerOptions();
-    final image =
+    final result =
         await channel.invokeMethod('openSelect', selectOptions.toJson());
-    if (image is List) {
+    if (result is List) {
       return Future.value(
-          image.map((data) => AssetMedia.fromJson(data)).toList());
+          result.map((data) => AssetMedia.fromJson(data)).toList());
     } else {
-      return Future.value(image);
+      return Future.value([]);
     }
   }
 
   static Future<List<AssetMedia>> openCamera(
       [PicturePickerOptions selectOptions]) async {
     if (selectOptions == null) selectOptions = PicturePickerOptions();
-    final camera =
+    final result =
         await channel.invokeMethod('openCamera', selectOptions.toJson());
-    if (camera is List) {
+    if (result is List) {
       return Future.value(
-          camera.map((data) => AssetMedia.fromJson(data)).toList());
+          result.map((data) => AssetMedia.fromJson(data)).toList());
     } else {
-      return Future.value(camera);
+      return Future.value([]);
     }
   }
 
