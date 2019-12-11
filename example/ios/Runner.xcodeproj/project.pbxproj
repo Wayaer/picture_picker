@@ -42,6 +42,9 @@
 		105D59E647D82D68D9B2396F /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
+		14BBBDAB23A14238001EB660 /* libpicture_picker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpicture_picker.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		14BBBDB023A1431C001EB660 /* libpicture_picker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpicture_picker.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		14BBBE3023A144C8001EB660 /* libpicture_picker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libpicture_picker.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		33CE4789405BCF17D5E632DA /* libPods-Runner.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Runner.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		3B80C3931E831B6300D905FE /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = App.framework; path = Flutter/App.framework; sourceTree = "<group>"; };
@@ -87,6 +90,9 @@
 		2715F5C3E0E28037BA68E065 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				14BBBE3023A144C8001EB660 /* libpicture_picker.a */,
+				14BBBDB023A1431C001EB660 /* libpicture_picker.a */,
+				14BBBDAB23A14238001EB660 /* libpicture_picker.a */,
 				33CE4789405BCF17D5E632DA /* libPods-Runner.a */,
 			);
 			name = Frameworks;
@@ -392,6 +398,13 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"picture_picker\"",
+					"-framework",
+					"\"Flutter\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = picture.picker.example;
 				PRODUCT_NAME = Runner;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -525,6 +538,13 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"picture_picker\"",
+					"-framework",
+					"\"Flutter\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = picture.picker.example;
 				PRODUCT_NAME = Runner;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -552,6 +572,13 @@
 					"$(PROJECT_DIR)/Flutter",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"picture_picker\"",
+					"-framework",
+					"\"Flutter\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = picture.picker.example;
 				PRODUCT_NAME = Runner;
 				TARGETED_DEVICE_FAMILY = "1,2";

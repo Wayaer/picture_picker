@@ -1,7 +1,7 @@
 name: picture_picker
 description: A new Flutter plugin about Picture Picker.
 version: 0.0.1
-author:  Wayaer <wayaer@foxmail.com>
+author: Wayaer <wayaer@foxmail.com>
 homepage: https://github.com/Wayaer/picture_picker
 environment:
   sdk: ">=2.1.0 <3.0.0"

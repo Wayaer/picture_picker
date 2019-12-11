@@ -1,7 +1,8 @@
 #import <Flutter/Flutter.h>
 #import <UIKit/UIKit.h>
-@interface PicturePicker : NSObject
-+ (void)openSelect:(NSDictionary*)arguments;
+#import "TZImagePickerController.h"
+@interface PicturePicker : NSObject <TZImagePickerControllerDelegate>
++ (void)openSelect:(NSDictionary*)arguments viewController:(UIViewController*)viewController;
 + (void)openCamera:(NSDictionary*)arguments;
 + (void)deleteCacheDirFile;
 

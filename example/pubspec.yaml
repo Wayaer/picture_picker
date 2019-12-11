@@ -16,7 +16,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  url_launcher: ^5.2.7
   picture_picker:
     path: ../
 

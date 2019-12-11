@@ -12,11 +12,11 @@ class PicturePickerOptions {
   bool previewImage; // 是否可预览图片 true or false
   bool isCamera; // 是否显示拍照按钮 true or false
   bool isGif; // 是否显示gif图片 true or false
+  int cropCompressQuality; // 裁剪压缩质量 默认90 int
 
   //android 以下为仅支持 android
   int imageSpanCount; // 每行显示个数 int
   int minimumCompressSize; // 小于100kb的图片不压缩
-  int cropCompressQuality; // 裁剪压缩质量 默认90 int
   int videoQuality; //视频录制质量 0 or 1 int
   int videoMinSecond; // 显示多少秒以内的视频or音频也可适用 int
   int recordVideoSecond; //视频秒数录制 默认60s int

@@ -4,13 +4,13 @@
 Pod::Spec.new do |s|
   s.name             = 'picture_picker'
   s.version          = '0.0.1'
-  s.summary          = 'A new Flutter plugin.'
+  s.summary          = 'Flutter plugin for Picture Picker.'
   s.description      = <<-DESC
-A new Flutter plugin.
+A Flutter plugin for making the underlying platform (Android or iOS) .
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/Wayaer/picture_picker'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Flutter Team' => 'wayaer@foxmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
