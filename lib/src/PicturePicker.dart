@@ -18,7 +18,7 @@ class PicturePicker {
     if (selectOptions == null) selectOptions = PicturePickerOptions();
     final result =
         await channel.invokeMethod('openSelect', selectOptions.toJson());
-    debugPrint(result);
+    debugPrint(result.toString());
     if (result is List) {
       return Future.value(
           result.map((data) => AssetMedia.fromJson(data)).toList());
@@ -32,7 +32,7 @@ class PicturePicker {
     if (selectOptions == null) selectOptions = PicturePickerOptions();
     final result =
         await channel.invokeMethod('openCamera', selectOptions.toJson());
-    debugPrint(result);
+    debugPrint(result.toString());
     if (result is List) {
       return Future.value(
           result.map((data) => AssetMedia.fromJson(data)).toList());
