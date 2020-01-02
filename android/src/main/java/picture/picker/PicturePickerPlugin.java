@@ -3,10 +3,10 @@ package picture.picker;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
-import android.util.ArrayMap;
 import android.util.Base64;
 
 import androidx.annotation.RequiresApi;
+import androidx.collection.ArrayMap;
 
 import com.luck.picture.lib.PictureSelector;
 import com.luck.picture.lib.config.PictureMimeType;
@@ -82,10 +82,9 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
         return false;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     private void onChooseResult(List<LocalMedia> selectList) {
         List<Map<String, Object>> resultList = new ArrayList<>();
-        selectList.forEach(localMedia -> {
+        for (LocalMedia localMedia : selectList) {
             Map<String, Object> resultMap = new ArrayMap<>();
             resultMap.put("path", localMedia.getPath());
             resultMap.put("size", localMedia.getSize());
@@ -101,7 +100,7 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
             resultMap.put("width", localMedia.getWidth());
             resultMap.put("height", localMedia.getHeight());
             resultList.add(resultMap);
-        });
+        }
         result.success(resultList);
     }
 
