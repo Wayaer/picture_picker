@@ -2,10 +2,8 @@ package picture.picker;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.util.Base64;
 
-import androidx.annotation.RequiresApi;
 import androidx.collection.ArrayMap;
 
 import com.luck.picture.lib.PictureSelector;
@@ -63,7 +61,6 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
         }
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public boolean onActivityResult(int requestCode, int resultCode, Intent intent) {
         if (resultCode == RESULT_OK) {
