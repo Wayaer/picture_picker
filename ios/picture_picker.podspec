@@ -15,6 +15,6 @@ A Flutter plugin for making the underlying platform (Android or iOS) .
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
-
+  s.dependency 'TZImagePickerController'
   s.ios.deployment_target = '8.0'
 end
