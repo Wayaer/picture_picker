@@ -25,8 +25,7 @@
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
     
     if ([@"openSelect" isEqualToString:call.method]) {
-    
-        [PicturePicker openSelect:call.arguments viewController:_viewController];
+        [PicturePicker openSelect:call.arguments viewController:_viewController result:result];
           result( @"openSelect");
     } else if ([@"openCamera" isEqualToString:call.method]) {
         [PicturePicker openCamera:call.arguments];

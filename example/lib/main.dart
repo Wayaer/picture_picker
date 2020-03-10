@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
                 print('打开相机');
                 openCamera();
               }),
-       
+
         ],
       ),
     );
@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
 
   openSelect() async {
     PicturePickerOptions pickerOptions = PicturePickerOptions();
+    pickerOptions.selectionMode = 1;
     var list = await PicturePicker.openSelect(pickerOptions);
     print(list);
   }

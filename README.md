@@ -22,4 +22,4 @@ A new Flutter plugin.
 ```
 
 ##### 2、中文适配：    
-- 添加中文 PROJECT -> Info -> Localizations 点击"+"按钮，选择Chinese(Simplified)
+- 添加中文 Runner -> Info.plist -> Localizations 点击"+"按钮，选择Chinese(Simplified)

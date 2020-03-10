@@ -12,8 +12,8 @@
 
 + (void)openSelect:(NSDictionary *)arguments viewController:(UIViewController*)viewController {
     
-     NSLog(@"LogInfo%@",arguments);
-     NSLog(@"LogInfo%@",viewController);
+    NSLog(@"LogInfo%@",arguments);
+    NSLog(@"LogInfo%@",viewController);
     int maxSelectNum = [[arguments objectForKey:@"maxSelectNum"] intValue];
     int minSelectNum = [[arguments objectForKey:@"minSelectNum"] intValue];
     //    int imageSpanCount = [[arguments objectForKey:@"imageSpanCount"] intValue];
@@ -21,7 +21,7 @@
     //    int minimumCompressSize = [[arguments objectForKey:@"minimumCompressSize"] intValue];
     int cropW = [[arguments objectForKey:@"cropW"] intValue];
     int cropH = [[arguments objectForKey:@"cropH"] intValue];
-        int cropCompressQuality = [[arguments objectForKey:@"cropCompressQuality"] intValue];
+    int cropCompressQuality = [[arguments objectForKey:@"cropCompressQuality"] intValue];
     int videoMaxSecond = [[arguments objectForKey:@"videoMaxSecond"] intValue];
     //    int videoMinSecond = [[arguments objectForKey:@"videoMinSecond"] intValue];
     //    int recordVideoSecond = [[arguments objectForKey:@"recordVideoSecond"] intValue];
@@ -71,10 +71,9 @@
     picker.allowPreview=previewImage;
     picker.allowPickingOriginalPhoto=originalPhoto;
     picker.showPhotoCannotSelectLayer=true;
-  
+    
     if (selectionMode == 1) {  // 单选模式
         picker.showSelectBtn = NO;
-        picker.allowCrop=enableCrop;
         if(enableCrop){
             picker.scaleAspectFillCrop=scaleAspectFillCrop;//是否图片等比缩放填充cropRect区域
             if(showCropCircle) {
@@ -88,36 +87,47 @@
         }
     }
     __weak TZImagePickerController *weakPicker = picker;
-    [picker setDidFinishPickingPhotosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto) {
-         [weakPicker showProgressHUD];
-          NSLog(@"LogInfo%@",assets);
+    [picker setDidFinishPickingPhotosWithInfosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto,NSArray<NSDictionary *> *infos) {
+        [weakPicker showProgressHUD];
+        NSLog(@"LogInfo%@",assets);
         if (maxSelectNum == 1 && enableCrop) {
-               [self cropImage:photos[0] asset:assets[0] quality:cropCompressQuality];
-            }
-//        else {
-//                [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//                    [self handleAssets:assets photos:photos quality:quality isSelectOriginalPhoto:isSelectOriginalPhoto completion:^(NSArray *selecteds) {
-//                      return selecteds;
-//                    } fail:^(NSError *error) {
-//
-//                    }];
-//                }];
-//            }
-         [weakPicker hideProgressHUD];
+            [self cropImage:photos[0] asset:assets[0] quality:cropCompressQuality];
+        }else {
+            [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                [self handleAssets:assets photos:photos quality:quality isSelectOriginalPhoto:isSelectOriginalPhoto completion:^(NSArray *selecteds) {
+                    return selecteds;
+                } fail:^(NSError *error) {
+                    
+                }];
+            }];
+        }
+        
+        if (maxSelectNum == 1 && enableCrop) {
+             [self invokeSuccessWithResult:@[[self handleCropImage:photos[0] phAsset:assets[0] quality:quality]]];
+         } else {
+             [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                 [self handleAssets:assets photos:photos quality:quality isSelectOriginalPhoto:isSelectOriginalPhoto completion:^(NSArray *selecteds) {
+                     [self invokeSuccessWithResult:selecteds];
+                 } fail:^(NSError *error) {
+
+                 }];
+             }];
+         }
+        [weakPicker hideProgressHUD];
     }];
-//    [picker setImagePickerControllerDidCancelHandle:^{
-//     NSLog(@"LogInfo%@",@"cancel");
-//        [weakPicker hideProgressHUD];
-//    }];
-//    [picker setDidFinishPickingGifImageHandle:^(UIImage *animatedImage, id sourceAssets) {
-//           NSLog(@"LogInfo%@",sourceAssets);
-//    }];
+    //    [picker setImagePickerControllerDidCancelHandle:^{
+    //     NSLog(@"LogInfo%@",@"cancel");
+    //        [weakPicker hideProgressHUD];
+    //    }];
+    //    [picker setDidFinishPickingGifImageHandle:^(UIImage *animatedImage, id sourceAssets) {
+    //           NSLog(@"LogInfo%@",sourceAssets);
+    //    }];
     [picker setDidFinishPickingPhotosWithInfosHandle:^(NSArray<UIImage *> *photos, NSArray *assets, BOOL isSelectOriginalPhoto, NSArray<NSDictionary *> *infos) {
         //
-           NSLog(@"LogInfo%@",assets);
+        NSLog(@"LogInfo%@",assets);
     }];
-
-
+    
+    
     [viewController presentViewController:picker animated:YES completion:nil];
 }
 //+ (UIViewController *)viewController {
@@ -143,16 +153,16 @@
     NSString *fileExtension    = [filename pathExtension];
     NSMutableString *filePath = [NSMutableString string];
     BOOL isPNG = [fileExtension hasSuffix:@"PNG"] || [fileExtension hasSuffix:@"png"];
-
+    
     if (isPNG) {
         [filePath appendString:[NSString stringWithFormat:@"%@PicturePickerCaches/%@", NSTemporaryDirectory(), filename]];
     } else {
         [filePath appendString:[NSString stringWithFormat:@"%@PicturePickerCaches/%@.jpg", NSTemporaryDirectory(), [filename stringByDeletingPathExtension]]];
     }
-
+    
     NSData *writeData = isPNG ? UIImagePNGRepresentation(image) : UIImageJPEGRepresentation(image, quality/100);
     [writeData writeToFile:filePath atomically:YES];
-
+    
     photo[@"path"]       = filePath;
     photo[@"width"]     = @(image.size.width);
     photo[@"height"]    = @(image.size.height);
@@ -168,10 +178,10 @@
     video[@"size"] = @(size);
     video[@"width"] = @(asset.pixelWidth);
     video[@"height"] = @(asset.pixelHeight);
-   // video[@"favorite"] = @(asset.favorite);
+    // video[@"favorite"] = @(asset.favorite);
     video[@"duration"] = @(asset.duration);
     //video[@"mediaType"] = @(asset.mediaType);
-   // video[@"coverUri"] = [self handleCropImage:coverImage phAsset:asset quality:quality][@"uri"];
+    // video[@"coverUri"] = [self handleCropImage:coverImage phAsset:asset quality:quality][@"uri"];
     return video;
 }
 /// 创建缓存目录
