@@ -26,10 +26,8 @@
     
     if ([@"openSelect" isEqualToString:call.method]) {
         [PicturePicker openSelect:call.arguments viewController:_viewController result:result];
-          result( @"openSelect");
     } else if ([@"openCamera" isEqualToString:call.method]) {
-        [PicturePicker openCamera:call.arguments];
-         result( @"openCamera");
+        [PicturePicker openCamera:call.arguments viewController:_viewController result:result];
     } else if ([@"deleteCacheDirFile" isEqualToString:call.method]) {
         [PicturePicker deleteCacheDirFile];
     } else{
