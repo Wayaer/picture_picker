@@ -7,6 +7,7 @@ import android.util.Base64;
 import androidx.collection.ArrayMap;
 
 import com.luck.picture.lib.PictureSelector;
+import com.luck.picture.lib.config.PictureConfig;
 import com.luck.picture.lib.config.PictureMimeType;
 import com.luck.picture.lib.entity.LocalMedia;
 
@@ -63,7 +64,9 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
 
     @Override
     public boolean onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (resultCode == RESULT_OK) {
+        boolean selectSucceed = requestCode == PictureConfig.CHOOSE_REQUEST && resultCode == RESULT_OK;
+        boolean photoSucceed = requestCode == PictureConfig.REQUEST_CAMERA && resultCode == RESULT_OK;
+        if (selectSucceed || photoSucceed) {
             List<LocalMedia> selectList = PictureSelector.obtainMultipleResult(intent);
             onChooseResult(selectList);
 //                    // 图片、视频、音频选择结果回调
@@ -73,8 +76,6 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
 //                    // 3.media.getCompressPath();为压缩后path，需判断media.isCompressed();是否为true  注意：音视频除外
 //                    // 如果裁剪并压缩了，以取压缩路径为准，因为是先裁剪后压缩的
 //                    // 4.media.getAndroidQToPath();为Android Q版本特有返回的字段，此字段有值就用来做上传使用
-        } else {
-            this.result.success("cancel");
         }
         return false;
     }
