@@ -97,6 +97,7 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
             }
             resultMap.put("width", localMedia.getWidth());
             resultMap.put("height", localMedia.getHeight());
+            resultMap.put("fileName", localMedia.getFileName());
             resultList.add(resultMap);
         }
         result.success(resultList);

@@ -38,52 +38,61 @@ dynamic convertValueByType(value, Type type, {String stack: ""}) {
   }
 }
 
+void tryCatch(Function f) {
+  try {
+    f?.call();
+  } catch (e, stack) {
+    debugPrint("$e");
+    debugPrint("$stack");
+  }
+}
+
 class AssetMedia {
-  String compressPath;
-  String cropPath;
-  int duration;
   int height;
+  String fileName;
   String path;
   int size;
   int width;
+  String cropPath;
+  String compressPath;
 
   AssetMedia({
-    this.compressPath,
-    this.cropPath,
-    this.duration,
     this.height,
+    this.fileName,
     this.path,
     this.size,
     this.width,
+    this.cropPath,
+    this.compressPath,
   });
 
   factory AssetMedia.fromJson(jsonRes) => jsonRes == null
       ? null
       : AssetMedia(
-          compressPath: convertValueByType(jsonRes['compressPath'], String,
-              stack: "AssetMedia-compressPath"),
-          cropPath: convertValueByType(jsonRes['cutPath'], String,
-              stack: "AssetMedia-cutPath"),
-          duration: convertValueByType(jsonRes['duration'], int,
-              stack: "AssetMedia-duration"),
           height: convertValueByType(jsonRes['height'], int,
               stack: "AssetMedia-height"),
+          fileName: convertValueByType(jsonRes['fileName'], String,
+              stack: "AssetMedia-fileName"),
           path: convertValueByType(jsonRes['path'], String,
               stack: "AssetMedia-path"),
           size: convertValueByType(jsonRes['size'], int,
               stack: "AssetMedia-size"),
           width: convertValueByType(jsonRes['width'], int,
               stack: "AssetMedia-width"),
+          cropPath: convertValueByType(jsonRes['cutPath'], String,
+              stack: "AssetMedia-cutPath"),
+          compressPath: convertValueByType(jsonRes['compressPath'], String,
+              stack: "AssetMedia-compressPath"),
         );
 
   Map<String, dynamic> toJson() => {
-        'compressPath': compressPath,
-        'cutPath': cropPath,
-        'duration': duration,
         'height': height,
+        'fileName': fileName,
         'path': path,
         'size': size,
         'width': width,
+        'cutPath': cropPath,
+        'compressPath': compressPath,
       };
 
   @override

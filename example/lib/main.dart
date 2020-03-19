@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:picture_picker/picture_picker.dart';
 
@@ -30,7 +29,6 @@ class MyApp extends StatelessWidget {
                 print('打开相机');
                 openCamera();
               }),
-
         ],
       ),
     );
