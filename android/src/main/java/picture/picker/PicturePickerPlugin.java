@@ -29,7 +29,6 @@ import static android.app.Activity.RESULT_OK;
 public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.ActivityResultListener {
     private Activity activity;
     private Result result;
-    private MethodCall call;
 
     private PicturePickerPlugin(Activity activity) {
         this.activity = activity;
@@ -43,9 +42,8 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
     }
 
     @Override
-    public void onMethodCall(MethodCall c, Result res) {
+    public void onMethodCall(MethodCall call, Result res) {
         result = res;
-        call = c;
         switch (call.method) {
             case "openSelect":
                 PicturePicker.openSelect(activity, call);
@@ -64,6 +62,7 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
 
     @Override
     public boolean onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (this.result == null) return false;
         boolean selectSucceed = requestCode == PictureConfig.CHOOSE_REQUEST && resultCode == RESULT_OK;
         boolean photoSucceed = requestCode == PictureConfig.REQUEST_CAMERA && resultCode == RESULT_OK;
         if (selectSucceed || photoSucceed) {
@@ -100,7 +99,7 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
             resultMap.put("fileName", localMedia.getFileName());
             resultList.add(resultMap);
         }
-        result.success(resultList);
+        this.result.success(resultList);
     }
 
     private static String encodeBase64(String path) throws Exception {
