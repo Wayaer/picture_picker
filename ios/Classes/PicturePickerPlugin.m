@@ -10,17 +10,17 @@
     FlutterMethodChannel* channel = [FlutterMethodChannel
                                      methodChannelWithName:@"PicturePicker"
                                      binaryMessenger:[registrar messenger]];
-     UIViewController *viewController =
-        [UIApplication sharedApplication].delegate.window.rootViewController;
+    UIViewController *viewController =
+    [UIApplication sharedApplication].delegate.window.rootViewController;
     PicturePickerPlugin* instance = [[PicturePickerPlugin alloc] initWithViewController:viewController];
     [registrar addMethodCallDelegate:instance channel:channel];
 }
 - (instancetype)initWithViewController:(UIViewController *)viewController {
-  self = [super init];
-  if (self) {
-    _viewController = viewController;
-  }
-  return self;
+    self = [super init];
+    if (self) {
+        _viewController = viewController;
+    }
+    return self;
 }
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
     

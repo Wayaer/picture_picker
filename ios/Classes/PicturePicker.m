@@ -10,7 +10,7 @@
 @end
 @implementation PicturePicker
 
-+ (void)openPicker:(NSDictionary *)arguments viewController:(UIViewController*)viewController  result:(FlutterResult)result{
++ (void)openSelect:(NSDictionary *)arguments viewController:(UIViewController*)viewController  result:(FlutterResult)result{
 
     //    NSLog(@"LogInfo%@",arguments);
     int maxSelectNum = [[arguments objectForKey:@"maxSelectNum"] intValue];
