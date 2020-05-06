@@ -1,7 +1,7 @@
 name: picture_picker
-description: A new Flutter plugin about Picture Picker.
-version: 0.0.4
-author: Wayaer <wayaer@foxmail.com>
+description: Flutter native selector works with android and ios.
+version: 0.0.5
+author: wayaer <wayaer@foxmail.com>
 homepage: https://github.com/Wayaer/picture_picker
 environment:
   sdk: ">=2.1.0 <3.0.0"
