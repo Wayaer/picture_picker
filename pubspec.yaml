@@ -1,6 +1,6 @@
 name: picture_picker
 description: A new Flutter plugin about Picture Picker.
-version: 0.0.1
+version: 0.0.4
 author: Wayaer <wayaer@foxmail.com>
 homepage: https://github.com/Wayaer/picture_picker
 environment:
@@ -10,10 +10,12 @@ dependencies:
   flutter:
     sdk: flutter
 
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
 flutter:
   plugin:
-    androidPackage: picture.picker
-    pluginClass: PicturePickerPlugin
+    platforms:
+      android:
+        package: picture.picker
+        pluginClass: PicturePickerPlugin
+      ios:
+        pluginClass: PicturePickerPlugin
+

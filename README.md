@@ -1,7 +1,5 @@
 # picture_picker
 
-## 此插件已全部迁移至[flutter_curiosity](https://github.com/Wayaer/flutter_curiosity)
-
 #### ios
 ##### 1、添加相册相关权限：
 

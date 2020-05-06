@@ -41,6 +41,15 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
         registrar.addActivityResultListener(plugin);
     }
 
+    private static String encodeBase64(String path) throws Exception {
+        File file = new File(path);
+        FileInputStream inputFile = new FileInputStream(file);
+        byte[] buffer = new byte[(int) file.length()];
+        inputFile.read(buffer);
+        inputFile.close();
+        return Base64.encodeToString(buffer, Base64.DEFAULT);
+    }
+
     @Override
     public void onMethodCall(MethodCall call, Result res) {
         result = res;
@@ -100,15 +109,6 @@ public class PicturePickerPlugin implements MethodCallHandler, PluginRegistry.Ac
             resultList.add(resultMap);
         }
         this.result.success(resultList);
-    }
-
-    private static String encodeBase64(String path) throws Exception {
-        File file = new File(path);
-        FileInputStream inputFile = new FileInputStream(file);
-        byte[] buffer = new byte[(int) file.length()];
-        inputFile.read(buffer);
-        inputFile.close();
-        return Base64.encodeToString(buffer, Base64.DEFAULT);
     }
 
 }

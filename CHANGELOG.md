@@ -1,4 +1,8 @@
+0.0.4 :
+    1.格式化代码
+0.0.3 :
+    1.格式化代码
+0.0.2 :
+    1.修改支持平台展示
 0.0.1 :
     1.create plugin 
-    2.add android picture piker
-    3.ios in the adaptation
