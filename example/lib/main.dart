@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Center(),
+          const Center(),
           RaisedButton(
-              child: Text('打开相册'),
+              child: const Text('打开相册'),
               onPressed: () {
                 print('打开相册');
                 openSelect();
@@ -27,9 +27,9 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  void openSelect() async {
-    PicturePickerOptions pickerOptions = PicturePickerOptions();
-    var list = await openImagePicker(pickerOptions);
+  Future<void> openSelect() async {
+    final PicturePickerOptions pickerOptions = PicturePickerOptions();
+    final List<AssetMedia> list = await openImagePicker(pickerOptions);
     print(list);
   }
 }

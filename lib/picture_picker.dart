@@ -1,19 +1,19 @@
-export 'model.dart';
-
 import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:picture_picker/model.dart';
 
-const MethodChannel _channel = const MethodChannel('PicturePicker');
+export 'model.dart';
 
-///  openPicker() async {
-///    PicturePickerOptions pickerOptions = PicturePickerOptions();
-///    pickerOptions.selectValueType = 0;
-///    pickerOptions.previewVideo = true;
-///    var list = await PicturePicker.openPicker(pickerOptions);
-///    print(list);
-///  }
+const MethodChannel _channel = MethodChannel('PicturePicker');
+
+///    openPicker() async {
+///      PicturePickerOptions pickerOptions = PicturePickerOptions();
+///      pickerOptions.selectValueType = 0;
+///      pickerOptions.previewVideo = true;
+///      var list = await PicturePicker.openPicker(pickerOptions);
+///      print(list);
+///    }
 Future<List<AssetMedia>> openImagePicker(
     [PicturePickerOptions selectOptions]) async {
   if (_supportPlatform()) return null;
@@ -29,7 +29,7 @@ Future<List<AssetMedia>> openImagePicker(
   return list;
 }
 
-/// [selectValueType] 0:全部类型，1:图片，2:视频
+///   [selectValueType] 0:全部类型，1:图片，2:视频
 Future<String> deleteCacheDirFile({int selectValueType = 0}) async {
   if (_supportPlatform()) return null;
   return _channel.invokeMethod(

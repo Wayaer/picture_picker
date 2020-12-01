@@ -32,8 +32,8 @@ class AssetMedia {
   String compressPath;
   int duration;
 
-  ///MediaTypeUnknown = 0, MediaTypeImage = 1,  MediaTypeVideo = 2, MediaTypeAudio = 3,
-  ///only ios
+  ///  MediaTypeUnknown = 0, MediaTypeImage = 1,  MediaTypeVideo = 2, MediaTypeAudio = 3,
+  ///  only ios
   String mediaType;
   double height;
   String path;
@@ -82,68 +82,68 @@ class PicturePickerOptions {
       this.originalPhoto = false,
       this.pickerSelectType = 0});
 
-  ///支持ios && android
+  ///  支持ios && android
   ///
-  /// 最大图片选择数量 int
+  ///   最大图片选择数量 int
   int maxSelectNum;
 
-  ///是否显示原图按钮
+  ///  是否显示原图按钮
   bool originalPhoto;
 
-  /// 最小选择数量 int
+  ///   最小选择数量 int
   int minSelectNum;
 
-  ///显示多少秒以内的视频or音频也可适用 int
+  ///  显示多少秒以内的视频or音频也可适用 int
   int videoMaxSecond;
 
-  ///全部0、图片1、视频2
+  ///  全部0、图片1、视频2
   int pickerSelectType;
 
-  /// 是否可预览图片 true or false
+  ///   是否可预览图片 true or false
   bool previewImage;
 
-  /// 是否显示拍照按钮 true or false
+  ///   是否显示拍照按钮 true or false
   bool isCamera;
 
-  /// 是否显示gif图片 true or false
+  ///   是否显示gif图片 true or false
   bool isGif;
 
-  ///android 以下为仅支持 android
+  ///  android 以下为仅支持 android
   ///
-  /// 每行显示个数 int
+  ///   每行显示个数 int
   int imageSpanCount;
 
-  /// 裁剪压缩质量 默认90 int
+  ///   裁剪压缩质量 默认90 int
   int cropCompressQuality;
 
-  /// 小于100kb的图片不压缩
+  ///   小于100kb的图片不压缩
   int minimumCompressSize;
 
-  ///视频录制质量 0 or 1 int
+  ///  视频录制质量 0 or 1 int
   int videoQuality;
 
-  /// 显示多少秒以内的视频or音频也可适用 int
+  ///   显示多少秒以内的视频or音频也可适用 int
   int videoMinSecond;
 
-  ///视频秒数录制 默认60s int
+  ///  视频秒数录制 默认60s int
   int recordVideoSecond;
 
-  /// 是否可预览视频 true or false
+  ///   是否可预览视频 true or false
   bool previewVideo;
 
-  /// 图片列表点击 缩放效果 默认true
+  ///   图片列表点击 缩放效果 默认true
   bool isZoomAnim;
 
-  /// 是否压缩 true or false
+  ///   是否压缩 true or false
   bool compress;
 
-  /// 裁剪框是否可拖拽 true or false
+  ///   裁剪框是否可拖拽 true or false
   bool freeStyleCropEnabled;
 
-  /// 是否开启点击声音 true or false
+  ///   是否开启点击声音 true or false
   bool openClickSound;
 
-  /// 自定义拍照保存路径,可不填
+  ///   自定义拍照保存路径,可不填
   String setOutputCameraPath;
 
   Map<String, dynamic> toJson() {
