@@ -22,28 +22,14 @@ class MyApp extends StatelessWidget {
                 print('打开相册');
                 openSelect();
               }),
-          Container(height: 20),
-          RaisedButton(
-              child: Text('打开相机'),
-              onPressed: () {
-                print('打开相机');
-                openCamera();
-              }),
         ],
       ),
     );
   }
 
-  openSelect() async {
+  void openSelect() async {
     PicturePickerOptions pickerOptions = PicturePickerOptions();
-    pickerOptions.selectionMode = 1;
-    var list = await PicturePicker.openSelect(pickerOptions);
-    print(list);
-  }
-
-  openCamera() async {
-    PicturePickerOptions pickerOptions = PicturePickerOptions();
-    var list = await PicturePicker.openCamera(pickerOptions);
+    var list = await openImagePicker(pickerOptions);
     print(list);
   }
 }

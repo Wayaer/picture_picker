@@ -3,7 +3,6 @@
 
 @implementation PicturePickerPlugin{
     UIViewController *_viewController;
-    
 }
 
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -23,13 +22,10 @@
     return self;
 }
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-    
-    if ([@"openSelect" isEqualToString:call.method]) {
-        [PicturePicker openSelect:call.arguments viewController:_viewController result:result];
-    } else if ([@"openCamera" isEqualToString:call.method]) {
-        [PicturePicker openCamera:call.arguments viewController:_viewController result:result];
+    if ([@"openImagePicker" isEqualToString:call.method]) {
+        [PicturePicker openImagePicker:call :_viewController :result];
     } else if ([@"deleteCacheDirFile" isEqualToString:call.method]) {
-        [PicturePicker deleteCacheDirFile];
+        [PicturePicker deleteCacheDirFile:result];
     } else{
         result(FlutterMethodNotImplemented);
     }

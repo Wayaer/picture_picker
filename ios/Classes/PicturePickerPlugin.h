@@ -2,4 +2,7 @@
 
 
 @interface PicturePickerPlugin : NSObject<FlutterPlugin>
+
++(void) registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar;
+
 @end
