@@ -1,4 +1,4 @@
-name: picture_picker
+name: example
 description: Demonstrates how to use the picture_picker plugin.
 publish_to: 'none'
 
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   picture_picker:
     path: ../
 

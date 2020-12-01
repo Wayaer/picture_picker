@@ -30,8 +30,7 @@ class PicturePickerPlugin : MethodCallHandler, ActivityAware, FlutterPlugin, Act
     }
 
     override fun onAttachedToEngine(@NonNull plugin: FlutterPlugin.FlutterPluginBinding) {
-        val curiosity = "Curiosity"
-        channel = MethodChannel(plugin.binaryMessenger, curiosity)
+        channel = MethodChannel(plugin.binaryMessenger, "PicturePicker")
         channel.setMethodCallHandler(this)
         context = plugin.applicationContext
 
