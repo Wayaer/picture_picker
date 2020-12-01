@@ -1,6 +1,6 @@
-# example
+# picture_picker_example
 
-A new Flutter project.
+Demonstrates how to use the picture_picker plugin.
 
 ## Getting Started
 
