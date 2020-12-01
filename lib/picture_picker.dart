@@ -1,10 +1,9 @@
+export 'model.dart';
+
 import 'dart:io';
 
 import 'package:flutter/services.dart';
-
-import 'model.dart';
-
-export 'model.dart';
+import 'package:picture_picker/model.dart';
 
 const MethodChannel _channel = const MethodChannel('PicturePicker');
 
